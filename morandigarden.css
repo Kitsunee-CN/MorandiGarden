@@ -1,0 +1,528 @@
+/*核心变量*/
+:root {
+    /*    颜色系统*/
+    --bg-color: #FBFDFB;                /* 背景颜色 */
+    --text-color: #403C3C;              /* 正文颜色 */
+    --h1-color: #7A5F52;                /* 一级标题颜色 */
+    --h2-color: #506956;                /* 二级标题颜色 */
+    --h3-color: #7A6F89;                /* 三级标题颜色 */
+    --h4-color: #6F7F88;                /* 四级标题颜色 */
+    --h5-color: #8A7A6F;                /* 五级标题颜色 */
+    --h6-color: #7D7A71;                /* 六级标题颜色 */
+    --link-color: #506956;              /* 链接颜色 */
+    --link-hover-color: #405946;        /* 链接悬浮颜色 */
+    --code-bg-color: #F0F5F3;           /* 代码背景颜色 */
+    --code-text-color: #403C3C;         /* 代码文字颜色 */
+    --blockquote-bg-color: #EEF4EF;     /* 引用背景颜色 */
+    --blockquote-border-color: #7A5F52; /* 引用边框颜色 */
+    --table-border-color: #7ea388;      /* 表格边框颜色 */
+    --md-char-color: #98948C;           /* Markdown符号颜色 */
+    --th-bg-color: #EAF0EB;             /* 表格表头背景颜色 */
+
+    /*    字体系统*/
+    --font-main: 'PuHuiTi', 'JetBrains Mono NL', monospace;             /* 主字体（中文+英文） */
+    --font-mono: 'JetBrains Mono NL', monospace;                        /* 代码等宽字体 */
+
+    /*    布局系统*/
+    --write-width: 860px;               /* 编辑区宽度 */
+    --line-height: 1.8;                 /* 行高 */
+    --font-size-base: 16px;             /* 基础字号 */
+    /* 标题字号变量 */
+    --h1-size: 2.2rem;
+    --h2-size: 1.8rem;
+    --h3-size: 1.5rem;
+    --h4-size: 1.3rem;
+    --h5-size: 1.1rem;
+    --h6-size: 1rem;
+}
+
+/* 注册字体 */
+/* 1. JetBrains Mono NL（无连字等宽英文） */
+@font-face {
+    font-family: 'JetBrains Mono NL';
+    src: url('./morandigarden/JetBrainsMonoNL-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'JetBrains Mono NL';
+    src: url('./morandigarden/JetBrainsMono-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+/* 2. 阿里巴巴普惠体（等宽中文） */
+@font-face {
+    font-family: 'PuHuiTi';
+    src: url('./morandigarden/AlibabaPuHuiTi-3-65-Medium.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'PuHuiTi';
+    src: url('./morandigarden/AlibabaPuHuiTi-3-105-Heavy.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+/* ==================== 全局基础样式 ==================== */
+html {
+    font-size: var(--font-size-base);
+}
+body {
+    background-color: var(--bg-color) !important;
+    color: var(--text-color);
+    font-family: var(--font-main);
+    line-height: var(--line-height);
+    margin: 0;
+    padding: 0;
+}
+
+#typora-container {
+    background-color: var(--bg-color) !important;
+}
+
+/* 编辑区样式 */
+#write {
+    max-width: var(--write-width);
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+/* 标题样式 */
+h1, h2, h3, h4, h5, h6 {
+    margin: 1.8rem 0 1rem;
+    font-weight: 700;
+    line-height: 1.4;
+    border: none;
+    padding: 0;
+    letter-spacing: 2px;
+}
+/* 一级标题 */
+h1 {
+    font-size: var(--h1-size);
+    color: var(--h1-color);
+    border-bottom: 2px solid #DDE6DF;
+    padding-bottom: 0.6rem;
+}
+/* 二级标题 */
+h2 {
+    font-size: var(--h2-size);
+    color: var(--h2-color);
+    border-left: 4px solid var(--h2-color);
+    padding-left: 0.8rem;
+    font-weight: 800; /* 额外加粗，进一步区分 */
+}
+/* 三级标题 */
+h3 {
+    font-size: var(--h3-size);
+    color: var(--h3-color);
+    padding-left: 0.4rem;
+}
+/* 四级标题 */
+h4 {
+    font-size: var(--h4-size);
+    color: var(--h4-color);
+}
+/* 五级标题 */
+h5 {
+    font-size: var(--h5-size);
+    color: var(--h5-color);
+    font-style: italic;
+}
+/* 六级标题 */
+h6 {
+    font-size: var(--h6-size);
+    color: var(--h6-color);
+    font-weight: 400;
+}
+
+/* 链接样式 */
+a {
+    color: var(--link-color);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(112, 137, 118, 0.3); /* 浅豆绿下划线 */
+}
+a:hover {
+    color: var(--link-hover-color);
+    border-bottom-color: var(--link-hover-color);
+    text-decoration: none; /* 取消默认下划线，用自定义边框 */
+}
+
+/* ==================== 代码样式 ==================== */
+
+/* 行内代码样式 */
+#write p code {
+    padding: 3px 3px 1px;
+    color: var(--h3-color);
+    background: var(--code-bg-color);
+    border-radius: 5px;
+    font-family: var(--font-mono);
+    letter-spacing: 0.5px;
+}
+
+/* 列表中的行内代码 */
+#write li code {
+    color: var(--h3-color);
+}
+
+/* 代码块头部样式 */
+.md-fences:not([lang="mermaid"])::before {
+    content: attr(lang); /* 显示代码语言 */
+    font-family: var(--font-main);
+    text-align: center;
+    padding-right: 15px;
+    color: var(--md-char-color);
+    display: block;
+    height: 30px;
+    width: 100%;
+    background-size: 40px;
+    border-radius: 20px; /* 顶部圆角 */
+    background: var(--code-bg-color)
+}
+
+/* CodeMirror 编辑器样式 */
+.CodeMirror-wrap .CodeMirror-scroll {
+    overflow-x: auto; /* 支持水平滚动 */
+}
+
+.md-fences .cm-s-inner.CodeMirror {
+    margin-top: -0.5rem; /* 调整与头部的间距 */
+}
+
+.cm-s-inner.CodeMirror {
+    padding: 1.2rem 0.8rem; /* 内边距 */
+    color: var(--code-text-color); /* 代码文字颜色 */
+    font-family: var(--font-mono); /* 使用等宽字体 */
+    border-radius: 10px; /* 圆角 */
+    background-color: var(--code-bg-color); /* 背景颜色 */
+    line-height: 1.6rem; /* 行高 */
+}
+
+.CodeMirror-gutters {
+    border-right: 1px solid rgba(184, 180, 172, 0.3); /* 行号区域右侧边框 */
+    background: inherit; /* 继承背景颜色 */
+    white-space: nowrap; /* 不换行 */
+}
+
+pre.CodeMirror-line {
+    padding: 0 1.2rem; /* 行内边距 */
+}
+
+.CodeMirror-linenumber {
+    padding: 0 3px 0 5px; /* 行号内边距 */
+    text-align: right; /* 行号右对齐 */
+    color: var(--md-char-color); /* 行号颜色 */
+}
+
+.cm-s-inner.CodeMirror {
+    background: var(--code-bg-color); /* 背景颜色 */
+    border-radius: 0 0 5px 5px; /* 底部圆角 */
+    padding: 20px 10px 20px 10px; /* 内边距 */
+    page-break-before: auto; /* 自动分页 */
+    line-height: 1.8rem; /* 行高 */
+}
+
+/* 关键字 */
+.cm-keyword {
+    color: #D33682 !important;
+    font-weight: 700 !important;
+}
+
+/* 变量 */
+.cm-variable {
+    color: #586E75 !important;
+}
+
+/* 类名/抽象类/匿名类 */
+.cm-type {
+    color: #2AA198 !important;
+}
+.cm-type.cm-class {
+    font-weight: 700 !important;
+    text-decoration: underline !important;
+    text-decoration-color: #2AA198 !important;
+}
+
+/* 接口/枚举名 */
+.cm-type.cm-interface,
+.cm-type.cm-enum {
+    font-weight: normal !important;
+    text-decoration: none !important;
+}
+
+/* 参数/类型参数 */
+.cm-variable-2,
+.cm-variable-3 {
+    color: #839496 !important;
+}
+
+/* 静态字段 */
+.cm-property.cm-static {
+    color: #859900 !important;
+    font-style: italic !important;
+}
+
+/* 实例字段 */
+.cm-property {
+    color: #859900 !important;
+}
+
+/* 注释 */
+.cm-comment,
+.md-comment {
+    color: #93A1A1 !important;
+    font-style: italic !important;
+}
+
+/* 字符串 */
+.cm-string {
+    color: #DC322F !important;
+    font-variant-ligatures: common-ligatures !important; /* 保留原连字配置 */
+}
+
+/* 有效字符串转义 */
+.cm-string-escape.cm-valid {
+    color: #6C71C4 !important;
+}
+
+/* 无效字符串转义 */
+.cm-string-escape.cm-invalid {
+    color: #859900 !important;
+    text-decoration: underline !important;
+    text-decoration-color: #859900 !important;
+}
+
+/* 数字 */
+.cm-number {
+    color: #6C71C4 !important;
+}
+
+/* 常量 */
+.cm-constant {
+    color: #859900 !important;
+    font-style: italic !important;
+}
+
+/* 操作符/标点（括号/逗号/点/分号） */
+.cm-operator,
+.cm-bracket,
+.cm-semicolon,
+.cm-comma,
+.cm-dot,
+.cm-parenths,
+.cm-braces {
+    color: #586E75 !important;
+}
+
+/* 静态方法 */
+.cm-def.cm-static {
+    color: #CB4B16 !important;
+    font-style: italic !important;
+}
+
+/* 实例方法/方法声明 */
+.cm-def {
+    color: #859900 !important;
+}
+
+/* 元数据/注解 */
+.cm-meta,
+.md-meta {
+    color: #CB4B16 !important;
+    font-style: italic !important;
+}
+
+/* 标签 */
+.cm-tag {
+    color: #586E75 !important;
+}
+.cm-tag:not(.cm-bracket) {
+    font-weight: normal !important; /* XML中标签无粗体，还原默认 */
+}
+
+/* 内置函数/预定义符号 */
+.cm-builtin {
+    color: #2AA198 !important;
+}
+
+/* 属性 */
+.cm-attribute {
+    color: #839496 !important;
+}
+
+/* 文档注释标签/标记 */
+.cm-comment.cm-doc-tag,
+.cm-comment.cm-doc-markup {
+    color: #CB4B16 !important;
+    font-style: italic !important;
+}
+
+/* 废弃属性/错误字符 */
+.cm-deprecated,
+.cm-bad-character {
+    color: #859900 !important;
+    text-decoration: underline !important;
+    text-decoration-color: #859900 !important;
+}
+
+/* 链接样式 + 悬浮变色 */
+#write a {
+    color: #DE7487 !important;
+    font-weight: 600 !important;
+    text-decoration: none !important;
+    border-bottom: 1px solid transparent;
+    transition: all 0.25s ease;
+}
+#write a:hover {
+    color: #DE7487 !important;
+    border-bottom: 1px solid #DE7487;
+}
+
+/* 无序列表：整体后移 + 二级空心圆 + 三级方形 */
+#write ul {
+    margin: 1rem 0 1rem 1.6rem !important; /* 整体向后移动一点 */
+    list-style-type: disc !important;
+    padding-left: 0 !important;
+}
+#write ul li {
+    margin: 0.5rem 0 !important;
+    line-height: 1.7 !important;
+}
+#write ul ul {
+    list-style-type: circle !important; /* 二级：空心圆 */
+    margin-left: 1.2rem !important;
+    padding-left: 0 !important;
+}
+#write ul ul ul {
+    list-style-type: square !important; /* 三级：方形 */
+    margin-left: 1.2rem !important;
+    padding-left: 0 !important;
+}
+
+/* 有序列表：整体向后移动一点 */
+#write ol {
+    margin: 1rem 0 1rem 1.6rem !important; /* 整体后移对齐标题 */
+    list-style-type: decimal !important;
+    padding-left: 0 !important;
+}
+#write ol li {
+    margin: 0.5rem 0 !important;
+    line-height: 1.7 !important;
+}
+#write ol ol {
+    margin-left: 1.2rem !important;
+    padding-left: 0 !important;
+}
+
+/* 任务列表容器 */
+#write .md-task-list-item {
+    list-style: none !important;
+    margin-left: -1.5rem !important;
+    position: relative !important;
+}
+
+/* 复选框核心（参照 Phycat-purple 主题的对齐方式） */
+#write .md-task-list-item > input {
+    -webkit-appearance: initial !important;
+    appearance: initial !important;
+    position: relative !important;
+    display: inline-block !important;
+    outline: none !important;
+    box-shadow: none !important;
+    border: none !important;
+    background: none !important;
+    vertical-align: middle !important;
+    margin-right: 8px !important;
+    width: 1.25rem !important;
+    height: 1.25rem !important;
+    top: 0 !important;
+    left: 0 !important;
+    transform: translateY(-2px) !important;
+}
+
+/* 圆形外观（用:before画圆） */
+#write .md-task-list-item > input:before {
+    content: ' ' !important;
+    display: block !important;
+    width: 1.2rem !important;
+    height: 1.2rem !important;
+    border-radius: 50% !important;
+    border: 2px solid #8F9FA8 !important;
+    background: transparent !important;
+    transition: all 0.2s ease-in-out !important;
+}
+
+/* 选中状态 */
+#write .md-task-list-item > input:checked:before {
+    background: #708976 !important;
+    border-color: #708976 !important;
+}
+
+/* 完成后删除线动画 */
+#write .md-task-list-item > input:checked + p {
+    color: #999 !important;
+    text-decoration: line-through !important;
+    text-decoration-thickness: 2px !important;
+    transition: all 0.3s ease !important;
+}
+
+/* 任务列表文本对齐 */
+#write .md-task-list-item p {
+    display: inline-block !important;
+    vertical-align: middle !important;
+    margin: 0 !important;
+    line-height: 1.7 !important;
+}
+
+/* 多级引用 */
+#write blockquote {
+    margin: 1.5rem 0 !important;
+    padding: 1rem 1.2rem !important;
+    background: var(--blockquote-bg-color) !important;
+    border-left: 4px solid var(--blockquote-border-color) !important;
+    border-radius: 0 6px 6px 0 !important;
+    font-style: italic !important;
+}
+#write blockquote blockquote {
+    border-left-color: var(--h3-color) !important;
+    background: rgba(238, 244, 239, 0.6) !important;
+    margin: 0.8rem 0 !important;
+}
+#write blockquote blockquote blockquote {
+    border-left-color: var(--h4-color) !important;
+    background: rgba(238, 244, 239, 0.4) !important;
+}
+
+/* 表格样式 */
+#write table {
+    border-collapse: collapse !important;
+    width: 100% !important;
+    margin: 2rem 0 !important;
+    border-radius: 5px !important;
+    overflow: hidden !important;
+}
+#write th {
+    background: var(--th-bg-color) !important;
+    padding: 0.9rem 1rem !important;
+    font-weight: 700 !important;
+    color: var(--h2-color) !important;
+    border: 1px solid var(--table-border-color) !important;
+}
+#write td {
+    padding: 0.8rem 1rem !important;
+    border: 1px solid var(--table-border-color) !important;
+    color: var(--text-color) !important;
+}
+#write tr:hover {
+    background: rgba(238, 244, 239, 0.5) !important;
+}
+
+/* 分隔线（加深） */
+#write hr {
+    border: none !important;
+    height: 2px !important;
+    background: #ccd8cf !important; /* 加深了 */
+    margin: 2.5rem 0 !important;
+    opacity: 1 !important;
+}
