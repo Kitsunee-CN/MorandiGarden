@@ -427,7 +427,7 @@ pre.CodeMirror-line {
     top: 35px !important;
     position: absolute !important;
     border-left: 1.5px solid var(--h4-color);
-    left: -16px !important;
+    left: -15.5px !important;
 }
 
 /* 一级列表竖线 - H3颜色 */
@@ -451,7 +451,7 @@ pre.CodeMirror-line {
 /* 任务列表容器 */
 #write .md-task-list-item {
     list-style: none !important;
-    margin-left: -1.5rem !important;
+    /*margin-left: -1.5rem !important;*/
     position: relative !important;
     padding-left: 2rem !important;
 }
@@ -491,6 +491,19 @@ pre.CodeMirror-line {
     border-color: #708976 !important;
 }
 
+/* 对号样式 */
+#write .md-task-list-item > input:checked:after {
+    content: '✓' !important;
+    display: block !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    color: white !important;
+    font-size: 1.3rem !important;
+    font-weight: bold !important;
+}
+
 /* 完成后删除线动画 */
 #write .md-task-list-item > input:checked + p {
     color: #999 !important;
@@ -507,7 +520,7 @@ pre.CodeMirror-line {
 
 /* 任务列表竖线位置调整 */
 #write li.md-task-list-item:before {
-    left: -7.5px !important;
+    left: -6.5px !important;
 }
 
 /* 多级引用 */
@@ -516,7 +529,7 @@ pre.CodeMirror-line {
     padding: 1rem 1.2rem !important;
     background: var(--blockquote-bg-color) !important;
     border-left: 4px solid var(--blockquote-border-color) !important;
-    border-radius: 0 6px 6px 0 !important;
+    border-radius: 0 10px 10px 0 !important;
     font-style: italic !important;
 }
 #write blockquote blockquote {
@@ -534,7 +547,6 @@ pre.CodeMirror-line {
     border-collapse: collapse !important;
     width: 100% !important;
     margin: 2rem 0 !important;
-    border-radius: 5px !important;
     overflow: hidden !important;
 }
 #write th {
@@ -560,4 +572,103 @@ pre.CodeMirror-line {
     background: #ccd8cf !important; /* 加深了 */
     margin: 2.5rem 0 !important;
     opacity: 1 !important;
+}
+
+/* ========== Typora 目录（TOC）全局样式 ========== */
+/* 目录容器整体样式 */
+.md-toc {
+    /* 目录整体背景 */
+    background-color: #f8f9fa !important;
+    /* 内边距：上下 15px，左右 20px */
+    padding: 15px 20px !important;
+    /* 圆角 */
+    border-radius: 16px !important;
+    /* 边框 */
+    border: 2px solid #DE7487 !important;
+    /* 目录宽度（可改为固定值如 300px） */
+    max-width: 100% !important;
+    /* 外边距 */
+    margin: 20px 0 !important;
+    /* 阴影（可选） */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15) !important;
+}
+
+.md-toc:before {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    content: "目录 Content";
+    font-size: 25px;
+    font-weight: 700;
+    color: var(--h1-color);
+}
+
+/* 目录所有列表项通用样式 */
+.md-toc-content li {
+    /* 行高 */
+    line-height: 1.8 !important;
+    /* 列表项间距 */
+    margin: 6px 0 !important;
+    /* 去掉默认列表符号 */
+    list-style: none !important;
+}
+
+/* 一级目录项（对应Markdown的H1） */
+.md-toc-content > li > a {
+    font-size: 24px !important;
+    font-weight: 600 !important;
+    color: #2d3748 !important;
+    /* 去掉下划线 */
+    text-decoration: none !important;
+    /* 缩进 */
+    padding-left: 0 !important;
+}
+
+/* 二级目录项（对应Markdown的H2） */
+.md-toc-content > li > ul > li > a {
+    font-size: 20px !important;
+    color: #4a5568 !important;
+    text-decoration: none !important;
+    /* 缩进比一级多 */
+    padding-left: 15px !important;
+}
+
+/* 三级目录项（对应Markdown的H3） */
+.md-toc-content > li > ul > li > ul > li > a {
+    font-size: 18px !important;
+    color: #718096 !important;
+    text-decoration: none !important;
+    padding-left: 30px !important;
+}
+
+/* 四级及以下目录项（H4-H6） */
+.md-toc-content li ul li ul li ul li a {
+    font-size: 16px !important;
+    color: #a0aec0 !important;
+    text-decoration: none !important;
+    padding-left: 45px !important;
+}
+
+/* 目录项 hover 悬浮效果 */
+.md-toc-content a:hover {
+    color: #4CAF50 !important;
+    /* 悬浮时加下划线 */
+    text-decoration: underline !important;
+    text-underline-offset: 3px !important;
+}
+
+/* 目录项激活/选中样式（点击跳转后） */
+.md-toc-content a.md-toc-active {
+    color: #2e7d32 !important;
+    font-weight: 700 !important;
+    background-color: #e8f5e9 !important;
+    padding: 2px 6px !important;
+    border-radius: 4px !important;
+}
+
+/* 隐藏目录的默认缩进和内边距 */
+.md-toc-content ul {
+    margin: 0 !important;
+    padding: 0 !important;
 }
