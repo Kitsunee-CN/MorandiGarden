@@ -415,30 +415,62 @@ pre.CodeMirror-line {
     padding-left: 0 !important;
 }
 
+/* 列表竖线效果 */
+#write li {
+    position: relative !important;
+}
+
+/* 所有列表竖线基础样式 */
+#write li:before {
+    content: "" !important;
+    height: calc(100% - 40px) !important;
+    top: 35px !important;
+    position: absolute !important;
+    border-left: 1.5px solid var(--h4-color);
+    left: -16px !important;
+}
+
+/* 一级列表竖线 - H3颜色 */
+#write ul > li:before,
+#write ol > li:before {
+    border-left: 1.5px solid var(--h3-color) !important;
+}
+
+/* 二级列表竖线 - H2颜色 */
+#write ul ul > li:before,
+#write ol ol > li:before {
+    border-left: 1px solid var(--h2-color) !important;
+}
+
+/* 三级列表竖线 - H1颜色 */
+#write ul ul ul > li:before,
+#write ol ol ol > li:before {
+    border-left: 0.5px solid var(--h1-color) !important;
+}
+
 /* 任务列表容器 */
 #write .md-task-list-item {
     list-style: none !important;
     margin-left: -1.5rem !important;
     position: relative !important;
+    padding-left: 2rem !important;
 }
 
-/* 复选框核心（参照 Phycat-purple 主题的对齐方式） */
+/* 复选框核心 */
 #write .md-task-list-item > input {
     -webkit-appearance: initial !important;
     appearance: initial !important;
-    position: relative !important;
-    display: inline-block !important;
+    position: absolute !important;
+    display: block !important;
     outline: none !important;
     box-shadow: none !important;
     border: none !important;
     background: none !important;
-    vertical-align: middle !important;
-    margin-right: 8px !important;
+    top: 3px !important;
+    left: 4px !important;
     width: 1.25rem !important;
     height: 1.25rem !important;
-    top: 0 !important;
-    left: 0 !important;
-    transform: translateY(-2px) !important;
+    transform: translateY(-5px) !important;
 }
 
 /* 圆形外观（用:before画圆） */
@@ -469,10 +501,13 @@ pre.CodeMirror-line {
 
 /* 任务列表文本对齐 */
 #write .md-task-list-item p {
-    display: inline-block !important;
-    vertical-align: middle !important;
     margin: 0 !important;
     line-height: 1.7 !important;
+}
+
+/* 任务列表竖线位置调整 */
+#write li.md-task-list-item:before {
+    left: -7.5px !important;
 }
 
 /* 多级引用 */
